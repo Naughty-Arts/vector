@@ -6,6 +6,17 @@ typedef struct
 	float x;
 	float y;
 	float z;
+} Vector3;
+
+Vector3* vector3_create(float x, float y, float z);
+void vector3_free(Vector3* v);
+char* vector3_string(Vector3* v);
+
+typedef struct
+{
+	float x;
+	float y;
+	float z;
 	float w;
 } Vector;
 

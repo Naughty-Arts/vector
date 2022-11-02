@@ -4,6 +4,27 @@
 #include <math.h>
 #include <stdlib.h>
 
+Vector3* vector3_create(float x, float y, float z)
+{
+	Vector3 *r = malloc(sizeof(Vector3));
+	r->x = x;
+	r->y = y;
+	r->z = z;
+	return r;
+}
+
+void vector3_free(Vector3* v)
+{
+	free(v);
+}
+
+char* vector3_string(Vector3* v)
+{
+	char* result = malloc(sizeof(char) * 128);
+	sprintf(result, "%f, %f, %f", v->x, v->y, v->z);
+	return result;
+}
+
 Vector create_vector(float x, float y, float z)
 {
 	Vector v = { x, y, z, 0 };
