@@ -56,6 +56,24 @@ Vector3* vector3_create_normalized(Vector3* v)
 	return r;
 }
 
+Vector3* vector3_create_plus(Vector3* v1, Vector3* v2)
+{
+	Vector3* r = malloc(sizeof(Vector3));
+	r->x = v1->x + v2->x;
+	r->y = v1->y + v2->y;
+	r->z = v1->z + v2->z;
+	return r;
+}
+
+Vector3* vector3_create_minus(Vector3* v1, Vector3* v2)
+{
+	Vector3* r = malloc(sizeof(Vector3));
+	r->x = v1->x - v2->x;
+	r->y = v1->y - v2->y;
+	r->z = v1->z - v2->z;
+	return r;
+}
+
 void vector3_free(Vector3* v)
 {
 	free(v);
@@ -91,6 +109,20 @@ void vector3_normalize(Vector3* v)
 {
 	float m = vector3_magnitude(v);
 	vector3_divide(v, m);
+}
+
+void vector3_plus(Vector3* v1, Vector3* v2)
+{
+	v1->x += v2->x;
+	v1->y += v2->y;
+	v1->z += v2->z;
+}
+
+void vector3_minus(Vector3* v1, Vector3* v2)
+{
+	v1->x -= v2->x;
+	v1->y -= v2->y;
+	v1->z -= v2->z;
 }
 
 Vector create_vector(float x, float y, float z)

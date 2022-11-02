@@ -14,12 +14,16 @@ Vector3* vector3_create_zero();
 Vector3* vector3_create_times(Vector3* v, float f);
 Vector3* vector3_create_divide(Vector3* v, float f);
 Vector3* vector3_create_normalized(Vector3* v);
+Vector3* vector3_create_plus(Vector3* v1, Vector3* v2);
+Vector3* vector3_create_minus(Vector3* v1, Vector3* v2);
 void vector3_free(Vector3* v);
 char* vector3_string(Vector3* v);
 float vector3_magnitude(Vector3* v);
 void vector3_times(Vector3* v, float f);
 void vector3_divide(Vector3* v, float f);
 void vector3_normalize(Vector3* v);
+void vector3_plus(Vector3* v, Vector3* v2);
+void vector3_minus(Vector3* v, Vector3* v2);
 
 typedef struct
 {
