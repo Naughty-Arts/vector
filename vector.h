@@ -9,8 +9,17 @@ typedef struct
 } Vector3;
 
 Vector3* vector3_create(float x, float y, float z);
+Vector3* vector3_copy(Vector3* v);
+Vector3* vector3_create_zero();
+Vector3* vector3_create_times(Vector3* v, float f);
+Vector3* vector3_create_divide(Vector3* v, float f);
+Vector3* vector3_create_normalized(Vector3* v);
 void vector3_free(Vector3* v);
 char* vector3_string(Vector3* v);
+float vector3_magnitude(Vector3* v);
+void vector3_times(Vector3* v, float f);
+void vector3_divide(Vector3* v, float f);
+void vector3_normalize(Vector3* v);
 
 typedef struct
 {

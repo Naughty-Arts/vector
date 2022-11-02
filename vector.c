@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include <string.h>
 
 Vector3* vector3_create(float x, float y, float z)
 {
@@ -10,6 +11,48 @@ Vector3* vector3_create(float x, float y, float z)
 	r->x = x;
 	r->y = y;
 	r->z = z;
+	return r;
+}
+
+Vector3* vector3_copy(Vector3* v)
+{
+	Vector3* r = malloc(sizeof(Vector3));
+	r->x = v->x;
+	r->y = v->y;
+	r->z = v->z;
+	return r;
+}
+
+Vector3* vector3_create_zero()
+{
+	Vector3* r = malloc(sizeof(Vector3));
+	memset(r, 0, sizeof(Vector3));
+	return r;
+}
+
+Vector3* vector3_create_times(Vector3* v, float f)
+{
+	Vector3* r = malloc(sizeof(Vector3));
+	r->x = v->x * f;
+	r->y = v->y * f;
+	r->z = v->z * f;
+	return r;
+}
+
+Vector3* vector3_create_divide(Vector3* v, float f)
+{
+	Vector3* r = malloc(sizeof(Vector3));
+	r->x = v->x / f;
+	r->y = v->y / f;
+	r->z = v->z / f;
+	return r;
+}
+
+Vector3* vector3_create_normalized(Vector3* v)
+{
+	Vector3* r = vector3_copy(v);
+	float m = vector3_magnitude(v);
+	vector3_divide(r, m);
 	return r;
 }
 
@@ -23,6 +66,31 @@ char* vector3_string(Vector3* v)
 	char* result = malloc(sizeof(char) * 128);
 	sprintf(result, "%f, %f, %f", v->x, v->y, v->z);
 	return result;
+}
+
+float vector3_magnitude(Vector3* v)
+{
+	return sqrt((v->x * v->x) + (v->y * v->y) + (v->z * v->z));
+}
+
+void vector3_times(Vector3* v, float f)
+{
+	v->x *= f;
+	v->y *= f;
+	v->z *= f;
+}
+
+void vector3_divide(Vector3* v, float f)
+{
+	v->x /= f;
+	v->y /= f;
+	v->z /= f;
+}
+
+void vector3_normalize(Vector3* v)
+{
+	float m = vector3_magnitude(v);
+	vector3_divide(v, m);
 }
 
 Vector create_vector(float x, float y, float z)
