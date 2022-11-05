@@ -161,14 +161,14 @@ Vector vector_div(Vector v, float a)
 	return r;
 }
 
-float vector_magnutude(Vector v)
+float vector_magnitude(Vector v)
 {
 	return sqrt(v.x * v.x + v.y * v.y + v.z * v.z + v.w * v.w);
 }
 
 Vector vector_normal(Vector v)
 {
-	float m = vector_magnutude(v);
+	float m = vector_magnitude(v);
 	Vector r = { v.x / m, v.y / m, v.z / m, v.w / m };
 	return r;
 }

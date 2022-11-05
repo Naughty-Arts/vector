@@ -39,7 +39,7 @@ Vector vector_add(Vector v1, Vector v2);
 Vector vector_subtract(Vector v1, Vector v2);
 Vector vector_times(Vector v, float a);
 Vector vector_div(Vector v, float a);
-float vector_magnutude(Vector v);
+float vector_magnitude(Vector v);
 Vector vector_normal(Vector v);
 float vector_dot(Vector v1, Vector v2);
 Vector vector_cross(Vector v1, Vector v2);
