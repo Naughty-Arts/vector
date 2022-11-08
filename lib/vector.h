@@ -6,43 +6,27 @@ typedef struct
 	float x;
 	float y;
 	float z;
-} Vector3;
-
-Vector3* vector3_create(float x, float y, float z);
-Vector3* vector3_copy(Vector3* v);
-Vector3* vector3_create_zero();
-Vector3* vector3_create_times(Vector3* v, float f);
-Vector3* vector3_create_divide(Vector3* v, float f);
-Vector3* vector3_create_normalized(Vector3* v);
-Vector3* vector3_create_plus(Vector3* v1, Vector3* v2);
-Vector3* vector3_create_minus(Vector3* v1, Vector3* v2);
-void vector3_free(Vector3* v);
-char* vector3_string(Vector3* v);
-float vector3_magnitude(Vector3* v);
-void vector3_times(Vector3* v, float f);
-void vector3_divide(Vector3* v, float f);
-void vector3_normalize(Vector3* v);
-void vector3_plus(Vector3* v, Vector3* v2);
-void vector3_minus(Vector3* v, Vector3* v2);
-
-typedef struct
-{
-	float x;
-	float y;
-	float z;
 	float w;
-} Vector;
+} v;
 
-Vector create_vector(float x, float y, float z);
-Vector create_point(float x, float y, float z);
-Vector vector_add(Vector v1, Vector v2);
-Vector vector_subtract(Vector v1, Vector v2);
-Vector vector_times(Vector v, float a);
-Vector vector_div(Vector v, float a);
-float vector_magnitude(Vector v);
-Vector vector_normal(Vector v);
-float vector_dot(Vector v1, Vector v2);
-Vector vector_cross(Vector v1, Vector v2);
-char* vector_string(Vector v);
+#define vv(x, y, z) { x, y, z, 0 }
+#define vp(x, y, z) { x, y, z, 1 }
+#define vc(v1) { v1.x, v1.y, v1.z, v1.w }
+#define vvz { 0, 0, 0, 0 }
+#define vpz { 0, 0, 0, 1 }
+#define vplus(v1, v2) { v1.x + v2.x, v1.y + v2.y, v1.z + v2.z, v1.w + v2.w }
+#define vplusa(v1, v2) v1.x += v2.x; v1.y += v2.y; v1.z += v2.z; v1.w += v2.w
+#define vminus(v1, v2) { v1.x - v2.x, v1.y - v2.y, v1.z - v2.z, v1.w - v2.w }
+#define vminusa(v1, v2) v1.x -= v2.x; v1.y -= v2.y; v1.z -= v2.z; v1.w -= v2.w
+#define vtimes(v1, a) { v1.x * a, v1.y * a, v1.z * a, v1.w * a }
+#define vtimesa(v1, a) v1.x *= a; v1.y *= a; v1.z *= a; v1.w *= a
+#define vdiv(v1, a) { v1.x / a, v1.y / a, v1.z / a, v1.w / a }
+#define vdivsa(v1, a) v1.x /= a; v1.y /= a; v1.z /= a; v1.w /= a
+#define vmag(v1) sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z + v1.w * v1.w)
+#define vn(v1) vdiv(v1, vmag(v1))
+#define vna(v1) vdiva(v1, vmag(v1))
+#define vd(v1) v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w
+#define vcr(v1, v2) { v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x, 0 }
+#define vprnt(l, v1) printf("%s: %f, %f, %f, %f\n", l, v1.x, v1.y, v1.z, v1.w)
 
 #endif
