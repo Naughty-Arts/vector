@@ -21,10 +21,10 @@ typedef struct
 #define vtimes(v1, a) { v1.x * a, v1.y * a, v1.z * a, v1.w * a }
 #define vtimesa(v1, a) v1.x *= a; v1.y *= a; v1.z *= a; v1.w *= a
 #define vdiv(v1, a) { v1.x / a, v1.y / a, v1.z / a, v1.w / a }
-#define vdivsa(v1, a) v1.x /= a; v1.y /= a; v1.z /= a; v1.w /= a
+#define vdiva(v1, a) v1.x /= a; v1.y /= a; v1.z /= a; v1.w /= a
 #define vmag(v1) sqrt(v1.x * v1.x + v1.y * v1.y + v1.z * v1.z + v1.w * v1.w)
-#define vn(v1) vdiv(v1, vmag(v1))
-#define vna(v1) vdiva(v1, vmag(v1))
+#define vn(N, v1) v N = v1; {float mag = vmag(v1); vdiva(N, mag);}
+#define vna(v1) {float mag = vmag(v1); vdiva(v1, mag);}
 #define vd(v1) v1.x * v2.x + v1.y * v2.y + v1.z * v2.z + v1.w * v2.w
 #define vcr(v1, v2) { v1.y * v2.z - v1.z * v2.y, v1.z * v2.x - v1.x * v2.z, v1.x * v2.y - v1.y * v2.x, 0 }
 #define vprnt(l, v1) printf("%s: %f, %f, %f, %f\n", l, v1.x, v1.y, v1.z, v1.w)
