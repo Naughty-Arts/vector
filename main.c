@@ -18,10 +18,10 @@ int main()
 	vprnt("zero vector", vzero);
 	vprnt("zero point", vpoint);
 
-	vn(normal, v2);
+	v normal = vn(v2);
 	vprnt("normal", normal);
 
-	vn(normal2, result);
+	v normal2 = vn(result);
 	vprnt("another normal", normal2);
 
 
